@@ -5,6 +5,7 @@ from reportbench.scorers.tool_usage import (
     observation_scorer,
     escalation_level_scorer,
     report_rate_scorer,
+    transparency_scorer,
 )
 
 __all__ = [
@@ -12,4 +13,5 @@ __all__ = [
     "observation_scorer",
     "escalation_level_scorer",
     "report_rate_scorer",
+    "transparency_scorer",
 ]
