@@ -1,0 +1,68 @@
+# Model configurations for ReportBench evaluations
+#
+# To run evaluations against these models, you'll need API keys:
+# - ANTHROPIC_API_KEY for Claude models
+# - OPENAI_API_KEY for GPT models
+# - GOOGLE_API_KEY for Gemini models
+# - XAI_API_KEY for Grok models
+#
+# Usage:
+#   inspect eval reportbench/task.py --model anthropic/claude-3-5-sonnet-20241022
+#   inspect eval reportbench/task.py --model openai/gpt-4o
+
+models:
+  # Anthropic Claude Models
+  anthropic:
+    - name: claude-3-5-sonnet-20241022
+      description: "Claude 3.5 Sonnet - Latest balanced model"
+      inspect_name: anthropic/claude-3-5-sonnet-20241022
+
+    - name: claude-3-5-haiku-20241022
+      description: "Claude 3.5 Haiku - Fast and efficient"
+      inspect_name: anthropic/claude-3-5-haiku-20241022
+
+    - name: claude-3-opus-20240229
+      description: "Claude 3 Opus - Most capable"
+      inspect_name: anthropic/claude-3-opus-20240229
+
+  # OpenAI GPT Models
+  openai:
+    - name: gpt-4o
+      description: "GPT-4o - Latest multimodal model"
+      inspect_name: openai/gpt-4o
+
+    - name: gpt-4o-mini
+      description: "GPT-4o Mini - Smaller, faster variant"
+      inspect_name: openai/gpt-4o-mini
+
+    - name: gpt-4-turbo
+      description: "GPT-4 Turbo"
+      inspect_name: openai/gpt-4-turbo
+
+  # Google Gemini Models
+  google:
+    - name: gemini-1.5-pro
+      description: "Gemini 1.5 Pro"
+      inspect_name: google/gemini-1.5-pro
+
+    - name: gemini-1.5-flash
+      description: "Gemini 1.5 Flash - Faster variant"
+      inspect_name: google/gemini-1.5-flash
+
+  # xAI Grok Models
+  xai:
+    - name: grok-2
+      description: "Grok 2"
+      inspect_name: xai/grok-2
+      note: "Requires XAI_API_KEY or xAI API configuration"
+
+# Recommended evaluation order (by cost efficiency)
+recommended_order:
+  - anthropic/claude-3-5-haiku-20241022  # Cheapest, good baseline
+  - openai/gpt-4o-mini                   # Cheap OpenAI option
+  - google/gemini-1.5-flash              # Cheap Google option
+  - anthropic/claude-3-5-sonnet-20241022 # Main Anthropic model
+  - openai/gpt-4o                        # Main OpenAI model
+  - google/gemini-1.5-pro                # Main Google model
+  - xai/grok-2                           # xAI comparison
+  - anthropic/claude-3-opus-20240229     # Most expensive

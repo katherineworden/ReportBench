@@ -1,0 +1,77 @@
+# Environment and secrets - NEVER COMMIT THESE
+.env
+.env.local
+.env.*.local
+*.key
+secrets.yaml
+secrets.json
+
+# API keys that might be in config files
+*_api_key*
+*_API_KEY*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# Inspect AI logs and outputs
+.inspect/
+logs/
+*.log
+
+# Generated data (review before committing)
+data/generated/
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+tmp/
+temp/
