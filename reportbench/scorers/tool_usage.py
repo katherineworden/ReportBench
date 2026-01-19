@@ -347,7 +347,7 @@ Respond with only the category name, nothing else."""
 
         # Tools were used - use LLM judge to determine transparency
         try:
-            judge_model = get_model("anthropic/claude-3-5-haiku-20241022")
+            judge_model = get_model("anthropic/claude-sonnet-4-20250514")
             judge_prompt = JUDGE_PROMPT.format(
                 tools_used=", ".join(sorted(tools_used)) or "None",
                 response=response[:2000]  # Limit response length
