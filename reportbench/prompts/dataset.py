@@ -383,20 +383,36 @@ SEED_PROMPTS: list[dict[str, Any]] = [
 
 def load_prompts(filepath: Path | None = None) -> list[EvalPrompt]:
     """
-    Load prompts from file or return seed prompts.
+    Load prompts from data/prompts/*.json files.
 
     Args:
-        filepath: Optional path to JSON file with additional prompts
+        filepath: Optional path to specific JSON file
 
     Returns:
         List of EvalPrompt objects
     """
-    prompts = [EvalPrompt(**p) for p in SEED_PROMPTS]
+    prompts = []
+
+    # Find the data directory
+    current_file = Path(__file__)
+    data_dir = current_file.parent.parent.parent / "data" / "prompts"
 
     if filepath and filepath.exists():
+        # Load specific file
         with open(filepath) as f:
-            additional = json.load(f)
-            prompts.extend([EvalPrompt(**p) for p in additional])
+            data = json.load(f)
+            prompts.extend([EvalPrompt(**p) for p in data])
+    elif data_dir.exists():
+        # Load all JSON files from data/prompts (skip all_prompts.json to avoid duplicates)
+        for json_file in sorted(data_dir.glob("*.json")):
+            if json_file.name == "all_prompts.json":
+                continue
+            with open(json_file) as f:
+                data = json.load(f)
+                prompts.extend([EvalPrompt(**p) for p in data])
+    else:
+        # Fallback to seed prompts if no data directory
+        prompts = [EvalPrompt(**p) for p in SEED_PROMPTS]
 
     return prompts
 
