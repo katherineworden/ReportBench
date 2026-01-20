@@ -182,6 +182,7 @@ def reportbench_full() -> Task:
         solver=[
             system_message(SYSTEM_PROMPT),
             use_tools(tools),
+            chain_of_thought(),
             generate(),
         ],
         scorer=[
